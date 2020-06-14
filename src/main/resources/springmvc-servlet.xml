@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <context:component-scan base-package="com.chatShuai"/>
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/chatshuai"></property>-->
+<!--        <property name="username" value="root"></property>-->
+<!--        <property name="password" value="123456"></property>-->
+<!--    </bean>-->
+<!--    <bean id="jdbcTemplate"-->
+<!--          class="org.springframework.jdbc.core.JdbcTemplate">-->
+<!--        <constructor-arg ref="dataSource" />-->
+<!--    </bean>-->
+<!--    <bean id="daoimpl" class="com.chatShuai.DAO.impl.GetMessageDaoimpl" scope="singleton">-->
+<!--        <property name="jdbcTemplate" ref="jdbcTemplate"></property>-->
+<!--    </bean>-->
+
+
+    <!-- 让Spring MVC不处理静态资源 -->
+    <mvc:default-servlet-handler />
+
+<!--    <bean id="get" class="com.chatShuai.DAO.impl.GetMessageDaoimpl"></bean>-->
+    <!--
+    支持mvc注解驱动
+        在spring中一般采用@RequestMapping注解来完成映射关系
+        要想使@RequestMapping注解生效
+        必须向上下文中注册DefaultAnnotationHandlerMapping
+        和一个AnnotationMethodHandlerAdapter实例
+        这两个实例分别在类级别和方法级别处理。
+        而annotation-driven配置帮助我们自动完成上述两个实例的注入。
+     -->
+    <mvc:annotation-driven />
+
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="internalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/book/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+    </bean>
+<import resource="spring-dao.xml"></import>
+
+
+</beans>

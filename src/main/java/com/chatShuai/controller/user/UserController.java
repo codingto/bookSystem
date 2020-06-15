@@ -1,6 +1,7 @@
 package com.chatShuai.controller.user;
 
 import com.alibaba.fastjson.JSON;
+import com.chatShuai.pojo.User;
 import com.chatShuai.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,8 @@ public class UserController {
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String loginCheck(HttpServletRequest request) {
-        System.out.println(request.getParameter("pwd"));
-        System.out.println(request.getParameter("name"));
+//        System.out.println(request.getParameter("pwd"));
+//        System.out.println(request.getParameter("name"));
 //        System.out.println(userService);
 
         int flag = userService.userLoginCheck(request.getParameter("name"), request.getParameter("pwd"));
@@ -38,13 +39,15 @@ public class UserController {
             res.put("stateCode", "0");
             res.put("msg", "密码错误！");
         } else {
-
+            //将用户信息存入session
+            request.getSession().setAttribute("userSession",new User(null,request.getParameter("name"),request.getParameter("pwd")));
+            System.out.println(request.getSession().getAttribute("userSession"));
             res.put("stateCode", "1");
             res.put("msg", "密码正确！正在转跳！");
         }
-        System.out.println("controller done");
-
-        System.out.println(JSON.toJSONString(res));
+//        System.out.println("controller done");
+//
+//        System.out.println(JSON.toJSONString(res));
         return JSON.toJSONString(res);
     }
 

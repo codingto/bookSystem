@@ -21,7 +21,12 @@
         <property name="dataSource" ref="datasource" />
         <!--bound mybatis-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath:com/chatShuai/mapper/user/UserMapper.xml"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:com/chatShuai/mapper/user/UserMapper.xml</value>
+                <value>classpath*:com/chatShuai/mapper/book/BookMapper.xml</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

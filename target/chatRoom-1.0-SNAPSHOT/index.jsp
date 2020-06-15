@@ -6,6 +6,7 @@
     <script src="JQ.js" type="text/javascript"></script>
     <script>
         $(function () {
+            // window.location.href = "book/admin_allBook.jsp";
             $("#loginButton").click(function () {
                 // console.log("adaasdas");
                 var name = $("#name").val();
@@ -37,18 +38,21 @@
                                 $("#info").text("提示:密码错误！");
 
                             } else if (data.stateCode.trim() == "1") {
-                              $("#info").text("提示:登陆成功，跳转中...");
-                                setTimeout(function(){window.location.href = "/book/showAllUser.jsp";}, 3000);
+
+                                $("#info").text("提示:登陆成功，跳转中...");
+                                setTimeout(function () {
+                                    window.location.href = "book/admin_main.jsp";
+                                }, 700);
 
 
                             }
 
-                            }
+                        }
                         ,
-                            error:function () {
-                                console.log("fall");
-                            }
-                        });
+                        error: function () {
+                            console.log("fall");
+                        }
+                    });
                 }
             })
         })
@@ -56,12 +60,18 @@
     </script>
 </head>
 <body>
-<div id="" logindiv>
-    <input type="text" id="name"><br>
-    <input type="password" id="pwd"><br>
-    <p style="text-align: right;color: red;position: absolute" id="info">
-    <button id="loginButton">登录</button>
-    <a href="/book/register.jsp">注册</a>
+<div style="height: 300px;width: 200px;">
+
+
+
+
+        <input type="text" id="name"><br>
+        <input type="password" id="pwd"><br>
+
+        <button id="loginButton" style="text-align: right;color: red;">登录</button>
+
+        <a href="/book/register.jsp">注册</a><br>
+    <p style="text-align: right;color: red;position: absolute" id="info"><br>
 </div>
 </body>
 </html>

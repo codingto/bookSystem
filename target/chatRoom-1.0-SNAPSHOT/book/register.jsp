@@ -40,7 +40,7 @@
                                     $("#info").text("该用户名已被注册！");
                                 }else{
                                     $("#info").text("注册成功，正在转跳登录页面。。。");
-                                    setTimeout(function(){window.location.href = "../";}, 3000);
+                                    setTimeout(function(){window.location.href = "../";}, 1300);
 
                                 }
 

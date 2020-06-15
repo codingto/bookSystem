@@ -6,7 +6,7 @@
 <configuration>
 
     <typeAliases>
-        <package name="com.pojo"/>
+        <package name="com.chatShuai.pojo"/>
     </typeAliases>
 
 </configuration>
